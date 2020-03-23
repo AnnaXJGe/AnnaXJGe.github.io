@@ -53,6 +53,8 @@ class Solution {
 
 
 ### 24. Swap Nodes in Pairs
+
+链表结构
 ```
 /**
  * Definition for singly-linked list.
@@ -63,8 +65,10 @@ class Solution {
  * }
  */
 ```
+
+
+递推
 ```
-递推 
 class Solution {
     public ListNode swapPairs(ListNode head) {
         if (head == null || head.next == null) return head;
