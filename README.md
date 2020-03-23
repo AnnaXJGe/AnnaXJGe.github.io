@@ -19,7 +19,7 @@ leetcode.com/problemset/all/?difficulty=Easy
 
 ## 344. Reverse String
 
-遍历循环 递推
+遍历 递推
 ```java
 class Solution {
   public void reverseString(char[] s) {
@@ -53,3 +53,32 @@ class Solution {
 
 
 ### 24. Swap Nodes in Pairs
+```
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+ 
+递推 
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode dummy = new ListNode(0);//建虚拟头
+        dummy.next = head;//虚拟头指向head
+        ListNode l1 = dummy;
+        ListNode l2 = head;
+        while (l2 != null && l2.next != null) {
+            ListNode newStart = l2.next.next;//建下一次转换的开始，不能用l2.next.next, 因为l2会变
+            l1.next = l2.next;//l1指向l2的下一个
+            l2.next.next = l2;//l2的下一个指向l2
+            l2.next = newStart;//l2指向newstart
+            l1 = l2;//指针后错一位
+            l2 = l2.next;//指针后错一位
+        }
+        return dummy.next;//不能用l1，l2，那是指针
+    }
+}
