@@ -62,7 +62,8 @@ class Solution {
  *     ListNode(int x) { val = x; }
  * }
  */
- 
+```
+```
 递推 
 class Solution {
     public ListNode swapPairs(ListNode head) {
@@ -82,3 +83,4 @@ class Solution {
         return dummy.next;//不能用l1，l2，那是指针
     }
 }
+```
