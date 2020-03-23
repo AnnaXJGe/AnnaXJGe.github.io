@@ -18,7 +18,7 @@ leetcode.com/problemset/all/?difficulty=Easy
 
 344. Reverse String
 
-遍历
+遍历循环 递推
 ```java
 class Solution {
   public void reverseString(char[] s) {
@@ -32,7 +32,7 @@ class Solution {
 }
 ```
 
-循环
+递归
 ```java
 class Solution {
   public void reverseString(char[] s) {
