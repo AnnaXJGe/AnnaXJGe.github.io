@@ -10,13 +10,13 @@ leetcode用java
 
 计算机基础
 
-
+简单题#easy 汇总
 leetcode.com/problemset/all/?difficulty=Easy
 
 
 
 
-###344. Reverse String
+### 344. Reverse String
 
 遍历循环 递推
 ```java
@@ -50,3 +50,5 @@ class Solution {
 }
 ```
 
+
+### 24. Swap Nodes in Pairs
