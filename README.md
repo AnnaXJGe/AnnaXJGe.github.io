@@ -88,3 +88,16 @@ class Solution {
   }
 }
 ```
+递归
+
+```
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+      if (head == null || head.head == nell) return head;
+      ListNode newone = head.next;
+      head.next = swapPairs(head.next.next);
+      newone.next = head;
+      return newone;
+    }
+ }
+ ```
