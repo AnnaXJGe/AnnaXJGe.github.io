@@ -14,6 +14,24 @@ leetcode用java
 简单题#easy 汇总
 leetcode.com/problemset/all/?difficulty=Easy
 
+## 001 Two Sum
+
+```
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int[] result = new int[2];
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[j] == target - nums[i]) {
+                    result = new int[] {i,j};
+                    
+                }
+            }
+        }
+        return result;
+    }
+}
+```
 
 
 
@@ -52,7 +70,7 @@ class Solution {
 ```
 
 
-### 24. Swap Nodes in Pairs
+## 24. Swap Nodes in Pairs
 
 链表结构
 ```
