@@ -18,7 +18,7 @@ leetcode.com/problemset/all/?difficulty=Easy
 
 344. Reverse String
 
-
+遍历
 ```java
 class Solution {
   public void reverseString(char[] s) {
@@ -31,3 +31,17 @@ class Solution {
   }
 }
 ```
+
+循环
+```java
+class Solution {
+  public void reverseString(char[] s) {
+    helper(0,s);
+  )
+  public static void helper(int index, char[] s) {
+    s[index] = s[s.length - i - 1];
+    helper(index + 1, s);
+  }
+}
+```
+
