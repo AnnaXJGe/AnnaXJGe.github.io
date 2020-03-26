@@ -587,6 +587,175 @@ This is a sliding window problem
   }
 ```
 
+给定一个数据集（附件census.csv），这个数据集总共30162行。
+每一行表示一名用户，每一个逗号分隔表示该用户的特征。总共拥有12个特征：
+["age","sex","education","native-country","race","marital-status","workclass","occupation","hours-per-week","income","capital-gain","capital-loss"]
+举个例子，某一行的数据可能长这个样子：
+age=Middle-aged,sex=Male,education=Bachelors,native-country=United-States,race=White,marital-status=Never-married,workclass=State-gov,occupation=Adm-clerical,hours-per-week=Full-time,income=Small,capital-gain=Low,capital-loss=None
+
+现在输入两个值 n, p，
+要求输出拥有n个特征的，在原始数据中出现概率大于p的组合。
+
+样例输入1
+3
+0.7
+
+样例输出1
+native-country=United-States,race=White,capital-gain=None
+native-country=United-States,race=White,capital-loss=None
+native-country=United-States,capital-gain=None,capital-loss=None
+race=White,capital-gain=None,capital-loss=None
+
+解释:
+以第一行输出为例：
+native-country=United-States，
+race=White，
+capital-gain=None
+这3条的组合在数据集中出现的占比要高于0.7
+
+样例输入2
+4
+0.6
+
+样例输出2
+native-country=United-States,race=White,capital-gain=None,capital-loss=None
+native-country=United-States,income=Small,capital-gain=None,capital-loss=None
+
+解释
+同理，4个特征同时出现，概率大于 0.6 的情况
+总共只有以上2种情况。
+
+
+```
+import csv
+col_name = ["age","sex","education","native-country","race","marital-status",
+            "workclass","occupation","hours-per-week","income","capital-gain","capital-loss"]
+
+def iterator(wait_choose, file, count, total, start, target):
+    flag = 0
+    res_set = []
+    res_ind = []
+    if count == total:
+        #print(count)
+        return [],1,[-1]
+    for index in range(start,len(wait_choose) - (total - count) +1):
+        if len(wait_choose[index]) == 0:
+            #print("jump",count,index)
+            continue
+        
+        #print("try", count,index)
+        for word in wait_choose[index]:
+            fileChosen, counts = chooseFrom(file, index, word)
+            if (counts + 0.0)/30162 < target:
+                continue
+            else:
+                #print(counts/30162)
+                strs, flag, s_index = iterator(wait_choose,fileChosen,count+1,total,index+1,target)
+                #print(strs,flag,s_index)
+            if flag == 1:
+                if len(strs) == 0:
+                    res_set.append(word)
+                    res_ind.append(str(index))
+                else:
+                    for string in strs:
+                        line = word
+                        line = line + ","+ string
+                        res_set.append(line)
+                        
+                    ind = "" + str(index)
+                    for intd in s_index:
+                        ind = "" + str(index)
+                        ind = ind +","+ str(intd)
+                        res_ind.append(ind)
+                    
+    if len(res_set) == 0:
+        return [], 0,[-1]
+    else:
+        return res_set,1 ,res_ind
+                    
+
+def chooseFrom(files,attr_index,attr):
+    number = 0
+    file_chosen = []
+    for file in files:
+        if file[attr_index] == attr:
+            number = number + 1
+            file_chosen.append(file)
+    return file_chosen, number
+
+def attributesSet(numberOfAttributes, supportThreshold):
+    dicts = []
+    files = []
+    for i in range(len(col_name)):
+        diction = {}
+        dicts.append(diction)
+    with open("census.csv","r") as csv_file:
+        all_lines = csv.reader(csv_file)
+        for one_line in all_lines:
+            a_line = []
+            for index in range(len(one_line)):
+                attr = one_line[index].split("=")
+                if attr[1] in dicts[index].keys():
+                    dicts[index][attr[1]] = dicts[index][attr[1]] + 1
+                else:
+                    dicts[index][attr[1]] = 0
+                a_line.append(attr[1])
+            files.append(a_line)
+                    
+    wait_choose = []
+    for dic in dicts:
+        wait_line = []
+        for(k,v) in dic.items():
+            dic[k] = (v + 0.0)/30162
+            if dic[k] < supportThreshold:
+                continue
+            else:
+                wait_line.append(k)
+        wait_choose.append(wait_line)
+    
+    true_tabel = []
+    ct = 0
+    
+    for wt in wait_choose:
+        if len(wt) == 0:
+            true_tabel.append(0)
+        else:
+            true_tabel.append(1)
+            ct = ct + 1
+    
+    if ct < numberOfAttributes:
+        return ""
+    
+    #print(wait_choose)
+    #print(true_tabel)
+    
+    res_set, flag, res_ind = iterator(wait_choose,files,0,numberOfAttributes,0, supportThreshold)
+    #print(res_set,res_ind)
+    
+    res_set_2 = []
+    for index in range(len(res_set)):
+        tag = res_set[index].split(",")
+        #print(tag)
+        ind = res_ind[index].split(",")
+        #print(ind)
+        lines = ""
+        for j in range(len(tag)):
+            line = ""
+            if j == 0:
+                line = col_name[int(ind[j])] +"="+ tag[j]
+            else:
+                line = lines+ ","+ col_name[int(ind[j])] +"="+ tag[j]
+            lines = line
+            #print(lines)
+        res_set_2.append(lines)
+    print(res_set_2)
+    
+    return 0
+
+if __name__ == "__main__":
+    
+    attributesSet(3,0.7)
+```
 
 
 ## Large Response
@@ -607,3 +776,17 @@ purchasing supply
 有几个小于特定值的3Sum。
 可以参考这个  Print triplets with sum less than or equal to k
 https://www.geeksforgeeks.org/pr ... than-or-equal-to-k/
+
+
+
+sort array in meandering order
+
+
+
+1. merge 两个sorted list。
+2. large response. 他会用Sacnner读一个文件名，然后你根据这个文件名按行读文件，读出其中的一个数字存下来再写出去的就行，做之前稍微看一下bufferReder和bufferWriter的用法就行。
+3. 里抠二吴久, 不一样的是他给的是个long，你输出也用long就行
+
+
+
+
