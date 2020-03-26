@@ -235,3 +235,44 @@ public class Solution {
         return max <= (nums.length / k);
     }
 ```
+## 134. Gas Station
+
+```
+class Solution {
+    public int canCompleteCircuit(int[] gas, int[] cost) {
+        
+        int start = 0, lack = 0, curr = 0;
+        for(int i = 0; i < gas.length; i++)
+        {
+            curr += gas[i] - cost[i];
+            if(curr < 0)
+            {
+                start = i+1;
+                lack += curr;
+                curr = 0;
+            }
+        }
+        return curr + lack>=0?start:-1;
+
+    }
+}
+```
+有类似的题 阿拉丁神灯
+```
+public static int optimalPoint(List<Integer> magic, List<Integer> dist) {
+        // Write your code here
+        int pos = -1, curr = 0, total = 0; 
+        for (int i = 0; i < magic.size(); i++) {
+            int diff = magic.get(i) - dist.get(i);
+            curr += diff; 
+            total += diff;
+            if (curr < 0) {
+                curr = 0;
+                pos = i;
+            }
+        }
+        if (total >= 0) 
+            return pos + 1; 
+        return -1;
+    }
+    ```
