@@ -205,6 +205,65 @@ public class Solution {
 ```
 
 
+面经里
+```
+public static void main(String[] args) {
+	String[] a = {"ab", "cd", "ef"};
+	String[] b = {"af", "ee", "ef"};
+	String[] res = twoStrings(a, b);
+	for(String r : res) {
+		System.out.println(r);
+	}
+}
+
+private static String[] twoStrings(String[] a, String[] b) {
+	String[] res = new String[a.length];
+	for(int i=0;i<a.length;i++) {
+		int bitMaskA = 0;
+		int bitMaskB = 0;
+		for(int j =0;j<a[i].length();j++) {
+			char ac = a[i].charAt(j);
+			char bc = b[i].charAt(j);
+			bitMaskA |= 1 << (ac - 'a');
+			bitMaskB |= 1 << (bc - 'a');
+		}
+		res[i] = (bitMaskA & bitMaskB) > 0 ? "YES" : "NO"; 
+	}
+	return res;
+}
+```
+
+另一种
+```
+public static void commonSubstring(List < String > a, List < String > b) {
+      // Write your code here
+      boolean[] ch = new boolean[26];
+      int flag = 0;
+      for (int i = 0; i < a.size(); i++) {
+          flag = 0;
+          ch = new boolean[26];
+          for (int j = 0; j < a.get(i).length(); j++) {
+              ch[a.get(i).charAt(j) - 'a'] = true;
+          }
+
+          for (int j = 0; j < b.get(i).length(); j++) {
+              if (ch[b.get(i).charAt(j) - 'a']) {
+                  flag = 1;
+                  break;
+              }
+          }
+
+          if (flag == 1)
+              System.out.println("YES");
+          else
+              System.out.println("NO");
+      }
+  }
+  ```
+  
+  
+
+
 ## Partitioning Array(HR)
 
 ```public static void main(String[] args) {
