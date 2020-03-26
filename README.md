@@ -336,4 +336,28 @@ public static int optimalPoint(List<Integer> magic, List<Integer> dist) {
     }
  ```
  
+ 另一种面经
+ ```
+ public static int optimalPoint(List<Integer> magic, List<Integer> dist) {
+        int sumofmagic = 0;
+        int sumofdist = 0;
+        int start = 0;
+        int tank = 0;
+        for(int i = 0; i < magic.size(); i++){
+            sumofmagic += magic.get(i);
+            sumofdist += dist.get(i);
+            tank += magic.get(i) - dist.get(i);
+            if(tank < 0){
+                start = i + 1;
+                tank = 0;
+            }
+        }
+        if(sumofmagic < sumofdist){
+            return -1;
+        }
+        else{
+            return start;
+        }
+```
+ 
  
