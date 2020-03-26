@@ -275,4 +275,6 @@ public static int optimalPoint(List<Integer> magic, List<Integer> dist) {
             return pos + 1; 
         return -1;
     }
-    ```
+ ```
+ 
+ 
