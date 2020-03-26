@@ -575,4 +575,12 @@ https://paper.dropbox.com/doc/IBM-OA-4WtsQ9aiolsi0HXm3mECx
 
 
 
+第二题
+purchasing supply
+这个就是啤酒空瓶换酒的模型，
+输入是 《初始资金，啤酒单价，几个瓶子能换一瓶酒》的string， 输出是直接打印，不需要return （这个比较鬼畜）
 
+第三题
+有几个小于特定值的3Sum。
+可以参考这个  Print triplets with sum less than or equal to k
+https://www.geeksforgeeks.org/pr ... than-or-equal-to-k/
