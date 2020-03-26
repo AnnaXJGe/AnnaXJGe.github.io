@@ -557,6 +557,8 @@ public static long carParkingRoof(List<Long> cars, int k) {
 https://1o24bbs.com/t/topic/15217/8
 
 
+https://paper.dropbox.com/doc/IBM-OA-4WtsQ9aiolsi0HXm3mECx
+
 
 
 
