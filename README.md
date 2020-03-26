@@ -363,6 +363,29 @@ public static int optimalPoint(List<Integer> magic, List<Integer> dist) {
             return start;
         }
 ```
+
+另一种
+
+```
+public static int aladdin(int [] magic, int [] dis){
+        int totalMagic = 0;
+        int totalUsed = 0;
+        int magicElixir = 0;
+        int minStart = 0;
+        for(int i = 0; i<magic.length;i++){
+            totalMagic += magic;
+            totalUsed += dis;
+            magicElixir += magic - dis;
+            if(magicElixir<0) {
+                minStart = i+1;
+                magicElixir = 0;
+            }            
+        }
+        return (totalMagic < totalUsed) ? -1 : minStart;
+    }
+    
+```
+ 
  
 ## Seperation Students
 
