@@ -472,6 +472,63 @@ public static int minMoves (int[] arr) {
     }
 ```
 
+下一个有时间上过不了的例子
+
+```
+
+public static List<Integer> closest(String s, List<Integer> queries) {
+    // Write your code here
+        List<Integer> result = new ArrayList<Integer>();
+        if (queries.size() == 0) {
+            return result;
+        }
+
+        char[] strToChar = s.toCharArray();
+
+        for(int i = 0; i < queries.size(); i++) {
+            int currIndx = queries.get(i); // target character index
+            if (currIndx < 0 || currIndx >= strToChar.length) { // invalid index from query
+                result.add(-1);
+                continue;
+            }
+
+            char c = strToChar[queries.get(i)];
+
+            int checkAway = 1;
+
+            boolean found = false;
+            
+            // check left and right from current index and find closest index of same character
+            while(currIndx - checkAway >= 0 || currIndx + checkAway < strToChar.length) {
+                int moveLeft = currIndx - checkAway;
+                int moveRight = currIndx + checkAway;
+                
+                if(moveLeft >=0 && c == strToChar[moveLeft]){
+                    result.add(moveLeft);
+                    found = true;
+
+                    break;
+                } else if(moveRight < strToChar.length && strToChar[moveRight] == c){
+                    result.add(moveRight);
+                    found = true;
+
+                    break;
+                }
+                
+                checkAway++;
+            }
+
+            if(!found){
+                result.add(-1);
+            }
+        }
+
+        return result;
+    }
+    
+```
+
+
 ## Parking Dilemma
 
 ```
