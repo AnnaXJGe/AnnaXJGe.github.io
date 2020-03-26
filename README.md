@@ -122,4 +122,26 @@ class Solution {
 
 
 
-### two strings
+### Two Strings (HackerRank)
+
+
+```
+static String twoStrings(String s1, String s2) {
+        HashSet<Character> string1_chars = new HashSet();
+        HashSet<Character> string2_chars = new HashSet();
+
+        for (int i = 0; i < s1.length(); i++) {
+            string1_chars.add(s1.charAt(i));
+        }
+
+        for (int j = 0; j < s2.length(); j++) {
+            string2_chars.add(s2.charAt(j));
+        }
+
+        string1_chars.retainAll(string2_chars);
+
+        if (string1_chars.isEmpty()) return "NO";
+        else return "YES";
+
+    }
+```
