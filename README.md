@@ -472,7 +472,32 @@ public static int minMoves (int[] arr) {
     }
 ```
 
+## Parking Dilemma
 
+```
+public static long carParkingRoof(List<Long> cars, int k) {
+    // Write your code here
+        if (cars.size() == 0 || k < 0) {
+            return 0;
+        }
+
+        Collections.sort(cars);
+        long minDist = Long.MAX_VALUE;
+
+        for (int i = 0; i <= cars.size() - k; i++) {
+            minDist = Math.min(minDist, cars.get(i + k - 1) - cars.get(i));
+        }
+
+        return minDist + 1;
+    }
+```
+
+
+
+
+## Large Response
+
+https://1o24bbs.com/t/topic/15217/8
 
 
 
