@@ -364,4 +364,117 @@ public static int optimalPoint(List<Integer> magic, List<Integer> dist) {
         }
 ```
  
+## Seperation Students
+
+多少次相邻swap，能把打乱的[1,0,1,1,0,0,0,1]，变成[0,0,0,0,1,1,1,1]；一定只能相邻的交换！！
+
+
+```
+public static List<Integer> closest(String s, List<Integer> queries) {
+        List<Integer> results = new ArrayList<>();
+        char[] array = s.toCharArray();
+        Map<Character, List<Integer>> map = new HashMap<>();
+        for(int i = 0; i < array.length; i++){
+            map.putIfAbsent(array[i], new ArrayList<Integer>());
+            map.get(array[i]).add(i);
+        }
+        for(int query: queries){
+            char c = array[query];
+            List<Integer> index = map.get(c);
+            if(index.size() == 1){
+                results.add(-1);
+            }
+            else{
+                int i = findclose(index, query);
+                results.add(index.get(i));
+            }
+        }
+        return results;
+
+    }
+    public static int findclose(List<Integer> indexs, int index){
+        int start = 0;
+        int end = indexs.size() - 1;
+        int i = 0;
+        while(start + 1 < end){
+            int mid = start + (end - start) / 2;
+            if(indexs.get(mid) == index){
+                i = mid;
+                break;
+            }
+            else if (indexs.get(mid) < index){
+                start = mid;
+            }
+            else{
+                end = mid;
+            }
+        }
+        if(indexs.get(start) == index){
+            i = start;
+        }
+        if(indexs.get(end) == index){
+            i = end;
+        }
+        if(i == 0){
+            return i + 1;
+        }
+        if(i == indexs.size() - 1){
+            return i - 1;
+        }
+        if(Math.abs(indexs.get(i-1) - index) <= Math.abs(indexs.get(i+1) - index)){
+            return i - 1;
+        }
+        return i+1;
+    }
+
+
+```
+
+## Who’s the closest
+
+给一个string有重复char，比方说“babab”。给你任意char的idx， 找离这个char距离最近的相同char的idx，如果有一样距离的返回小的。前面例子如果给2，返回0
  
+
+```
+public static int minMoves (int[] arr) {
+        int ans = 0;
+        ans = Math.min(helper(arr, true), helper(arr, false));
+        return ans;
+    }
+
+    public static int helper (int[] arr, boolean flag) {
+        int front = 0, end = 1;
+        int count = 0;
+
+        if (flag) {
+            front = 1;
+            end = 0;
+        }
+
+        int lo = 0, hi = arr.length - 1;
+        while (lo < hi) {
+            while (lo < hi && arr[lo] == front) {
+                lo++;
+            }
+            while (hi > lo && arr[hi] == end) {
+                hi--;
+            }
+            // forget to hi--, lo++.
+            int tmp = arr[hi];
+            arr[hi] = arr[lo];
+            arr[lo] = tmp;
+            hi--;
+            lo++;
+            count++;
+        }
+        System.out.println(Arrays.toString(arr));
+        return count;
+    }
+```
+
+
+
+
+
+
+
