@@ -16,7 +16,7 @@ leetcode用java
 简单题#easy 汇总
 leetcode.com/problemset/all/?difficulty=Easy
 
-[toc]
+npm i doctoc -g
 
 ## 001 Two Sum
 
