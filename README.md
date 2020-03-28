@@ -942,7 +942,19 @@ return ;
 ```
 
 
-opsDev的oa，四道题，第一题很简单，第二题写regex也很简单，后面两题竟然要本地ssh，第三题写shell（算fib，不难）第四题写一个叫puppet的东西（完全懵逼），挣扎着查了一下好像是运维用的东西
+opsDev的oa，四道题，第一题很简单，第二题写regex也很简单，
+后面两题竟然要本地ssh，
+
+https://blog.csdn.net/qq_34581118/article/details/77132208?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task
+
+第三题写shell（算fib，不难）
+
+https://blog.csdn.net/lizhidefengzi/article/details/76860425
+
+第四题写一个叫puppet的东西（完全懵逼），挣扎着查了一下好像是运维用的东西
+
+https://blog.51cto.com/blxueyuan/1924072
+
 
 ## Email Threads
 
