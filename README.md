@@ -777,6 +777,39 @@ if __name__ == "__main__":
 
 ## Large Response
 
+
+
+文件I/O题 request record，给一个文件名，按行读取里面的记录，只要取最后的bytes数就行，大于5000就输出，txt文件里长得类似这样：
+www.leetcode.com - - GET /leetcode.com/problems/all 200 300
+www.google.com - - GET /google.com/search? 200 59349
+www.baidu.com - - GET /baidu.com/news 200 300
+我的代码：
+```
+ifstream ifile(filename);
+ofstream ofile(ofilename);
+string line;
+int sum = 0, count=0;
+while (getline(file, line)
+{
+int n = line.size()-1, t=1, tmp=0;
+while (isdigit(line[n])){
+tmp += (line[n] - '0')*t;
+t *= 10;
+n--;
+}
+if (tmp >= 5000) {
+sum += tmp;
+count++;
+}
+}
+ofile<< count<<endl<<sum;
+return ;
+```
+
+
+
+
+
 https://1o24bbs.com/t/topic/15217/8
 
 
