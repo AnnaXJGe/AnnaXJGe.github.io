@@ -449,6 +449,7 @@ public static int helper (int[] arr, boolean flag) {
 可以用两个pointer记录，第一个记录遇0的位置，第二个从第一个pointer之后开始loop, 遇到1，计算index差，然后pointer++。把list reverse一下再走一遍，取两次值小的。index为i + 1时，重新计算累计和也需要O(n)完成一个cycle，再次来到i + 1时停止
 
 ```
+
 public static int minMoves (int[] arr) {
 	int ans = 0;
 	ans = Math.min(helper(arr, true), helper(arr, false));
