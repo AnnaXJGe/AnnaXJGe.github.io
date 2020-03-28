@@ -394,13 +394,12 @@ public static int aladdin(int [] magic, int [] dis){
 
 ```
 public static int minMoves (int[] arr) {
-        int ans = 0;
-        ans = Math.min(helper(arr, true), helper(arr, false));
+	int ans = 0;
+	ans = Math.min(helper(arr, true), helper(arr, false));
         return ans;
     }
-
-    public static int helper (int[] arr, boolean flag) {
-        int front = 0, end = 1;
+public static int helper (int[] arr, boolean flag) {
+	int front = 0, end = 1;
         int count = 0;
 
         if (flag) {
@@ -410,23 +409,23 @@ public static int minMoves (int[] arr) {
 
         int lo = 0, hi = arr.length - 1;
         while (lo < hi) {
-            while (lo < hi && arr[lo] == front) {
-                lo++;
-            }
-            while (hi > lo && arr[hi] == end) {
-                hi--;
-            }
-            // forget to hi--, lo++.
-            int tmp = arr[hi];
-            arr[hi] = arr[lo];
-            arr[lo] = tmp;
-            hi--;
-            lo++;
-            count++;
-        }
+        	while (lo < hi && arr[lo] == front) {
+                	lo++;
+			}
+        	while (hi > lo && arr[hi] == end) {
+			hi--;
+			}
+            	// forget to hi--, lo++.
+		int tmp = arr[hi];
+		arr[hi] = arr[lo];
+		arr[lo] = tmp;
+		hi--;
+		lo++;
+		count++;
+        	}
         System.out.println(Arrays.toString(arr));
         return count;
-    }
+	}
 
 ```
 
