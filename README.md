@@ -408,7 +408,7 @@ public static int aladdin(int [] magic, int [] dis){
 
 多少次相邻swap，能把打乱的[1,0,1,1,0,0,0,1]，变成[0,0,0,0,1,1,1,1]；一定只能相邻的交换！！
 
-
+不对的解法
 ```
 public static int minMoves (int[] arr) {
 	int ans = 0;
@@ -445,6 +445,45 @@ public static int helper (int[] arr, boolean flag) {
 	}
 
 ```
+自己尝试
+可以用两个pointer记录，第一个记录遇0的位置，第二个从第一个pointer之后开始loop, 遇到1，计算index差，然后pointer++。把list reverse一下再走一遍，取两次值小的。index为i + 1时，重新计算累计和也需要O(n)完成一个cycle，再次来到i + 1时停止
+
+```
+public static int minMoves (int[] arr) {
+	int ans = 0;
+	ans = Math.min(helper(arr, true), helper(arr, false));
+        return ans;
+    }
+public static int helper (int[] arr, boolean flag) {
+	int front = 0, end = 1;
+        int count = 0;
+
+        if (flag) {
+            front = 1;
+            end = 0;
+        }
+
+        for ( int i = 0; i < arr.length - 1; i++) {
+		int m = i, j = 0;
+		while (arr[m] = front) m++;
+		if (arr[m] = end) {
+			int j = m+1;
+			}
+		while (arr[j] = end) j++;
+		if (arr[j] = 0) {
+			count += j - i;
+			temp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;
+			}
+		}
+        System.out.println(Arrays.toString(arr));
+        return count;
+	}
+
+```
+
+
 
 ## Who’s the closest
 
