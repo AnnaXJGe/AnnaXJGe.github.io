@@ -393,6 +393,49 @@ public static int aladdin(int [] magic, int [] dis){
 
 
 ```
+public static int minMoves (int[] arr) {
+        int ans = 0;
+        ans = Math.min(helper(arr, true), helper(arr, false));
+        return ans;
+    }
+
+    public static int helper (int[] arr, boolean flag) {
+        int front = 0, end = 1;
+        int count = 0;
+
+        if (flag) {
+            front = 1;
+            end = 0;
+        }
+
+        int lo = 0, hi = arr.length - 1;
+        while (lo < hi) {
+            while (lo < hi && arr[lo] == front) {
+                lo++;
+            }
+            while (hi > lo && arr[hi] == end) {
+                hi--;
+            }
+            // forget to hi--, lo++.
+            int tmp = arr[hi];
+            arr[hi] = arr[lo];
+            arr[lo] = tmp;
+            hi--;
+            lo++;
+            count++;
+        }
+        System.out.println(Arrays.toString(arr));
+        return count;
+    }
+
+```
+
+## Who’s the closest
+
+给一个string有重复char，比方说“babab”。给你任意char的idx， 找离这个char距离最近的相同char的idx，如果有一样距离的返回小的。前面例子如果给2，返回0
+ 
+
+```
 public static List<Integer> closest(String s, List<Integer> queries) {
         List<Integer> results = new ArrayList<>();
         char[] array = s.toCharArray();
@@ -451,48 +494,6 @@ public static List<Integer> closest(String s, List<Integer> queries) {
     }
 
 
-```
-
-## Who’s the closest
-
-给一个string有重复char，比方说“babab”。给你任意char的idx， 找离这个char距离最近的相同char的idx，如果有一样距离的返回小的。前面例子如果给2，返回0
- 
-
-```
-public static int minMoves (int[] arr) {
-        int ans = 0;
-        ans = Math.min(helper(arr, true), helper(arr, false));
-        return ans;
-    }
-
-    public static int helper (int[] arr, boolean flag) {
-        int front = 0, end = 1;
-        int count = 0;
-
-        if (flag) {
-            front = 1;
-            end = 0;
-        }
-
-        int lo = 0, hi = arr.length - 1;
-        while (lo < hi) {
-            while (lo < hi && arr[lo] == front) {
-                lo++;
-            }
-            while (hi > lo && arr[hi] == end) {
-                hi--;
-            }
-            // forget to hi--, lo++.
-            int tmp = arr[hi];
-            arr[hi] = arr[lo];
-            arr[lo] = tmp;
-            hi--;
-            lo++;
-            count++;
-        }
-        System.out.println(Arrays.toString(arr));
-        return count;
-    }
 ```
 
 下一个有时间上过不了的例子
