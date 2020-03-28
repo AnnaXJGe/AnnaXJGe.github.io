@@ -685,6 +685,13 @@ class GFG
 
 
 
+这个就是啤酒空瓶换酒的模型，
+输入是 《初始资金，啤酒单价，几个瓶子能换一瓶酒》的string， 输出是直接打印，不需要return （这个比较鬼畜）
+
+
+
+
+
 ## Census.csv
 
 给定一个数据集（附件census.csv），这个数据集总共30162行。
@@ -887,13 +894,6 @@ https://blog.csdn.net/qq508618087/article/details/50881359
 里抠二吴久, 不一样的是他给的是个long，你输出也用long就行
 
 https://leetcode.com/problems/valid-triangle-number/discuss/104200/
-
-
-## Purchasing Supply
-
-这个就是啤酒空瓶换酒的模型，
-输入是 《初始资金，啤酒单价，几个瓶子能换一瓶酒》的string， 输出是直接打印，不需要return （这个比较鬼畜）
-
 
 
 
