@@ -387,7 +387,7 @@ public static int aladdin(int [] magic, int [] dis){
 ```
  
  
-## Seperation Students
+## Seperating Students
 
 多少次相邻swap，能把打乱的[1,0,1,1,0,0,0,1]，变成[0,0,0,0,1,1,1,1]；一定只能相邻的交换！！
 
@@ -765,6 +765,8 @@ https://1o24bbs.com/t/topic/15217/8
 
 https://paper.dropbox.com/doc/IBM-OA-4WtsQ9aiolsi0HXm3mECx
 
+
+https://www.1point3acres.com/bbs/collection/229895
 
 
 第二题
