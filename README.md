@@ -644,6 +644,28 @@ This is a sliding window problem
   }
 ```
 
+## Shifting Strings
+
+这个主要是看下规律，会发现针对rightShifts移动字符的时候，其实就是针对
+leftShifts移动s.length() - rightShifts个字符。
+给一个string 和 int leftShifts, int rightShifts. 输出shift 后的strings. 如果s = abcd, leftShift1 =
+bcda, 然后在rightShift2 = dabc.
+
+
+## Purchasing Supplies
+
+大致意思是 你有一个budget n, cost c, 还有一个m. 如果 n =
+4, c = 1, m = 2的话， 你可以先买4个集装箱，然后着4个集装箱退给他，还给你4/m = 2个， 退回
+来的2个再还给他，在给你2/m = 1个。最后你会有 4 + 2 + 1 = 7个。
+买containers，给最开始的budget，每个container的cost，和多少个container可以exchange一个
+新的。求总共能有多少个container。E.g., 6块budget，cost = 2，exchange = 2，总共能有5个箱
+子（最开始能买仨，用这三个里面的两个再换一个，用刚刚三个里省下的和这个新换的再换一个
+，总共5个）
+
+
+
+## Census.csv
+
 给定一个数据集（附件census.csv），这个数据集总共30162行。
 每一行表示一名用户，每一个逗号分隔表示该用户的特征。总共拥有12个特征：
 ["age","sex","education","native-country","race","marital-status","workclass","occupation","hours-per-week","income","capital-gain","capital-loss"]
@@ -815,7 +837,57 @@ if __name__ == "__main__":
 ```
 
 
+## Meandering Array
+
+
+
+
+
+sort array in meandering order
+
+
+
+
+
+
+
+
+## Triple
+
+
+有几个小于特定值的3Sum。
+可以参考这个  Print triplets with sum less than or equal to k
+https://www.geeksforgeeks.org/pr ... than-or-equal-to-k/
+
+https://baihuqian.github.io/2018-07-28-3sum-smaller/
+
+https://blog.csdn.net/qq508618087/article/details/50881359
+
+里抠二吴久, 不一样的是他给的是个long，你输出也用long就行
+
+https://leetcode.com/problems/valid-triangle-number/discuss/104200/
+
+
+## Purchasing Supply
+
+这个就是啤酒空瓶换酒的模型，
+输入是 《初始资金，啤酒单价，几个瓶子能换一瓶酒》的string， 输出是直接打印，不需要return （这个比较鬼畜）
+
+
+
+
+## merge 两个sorted list。
+
+
+
+
+
+
+
 ## Large Response
+
+large response. 他会用Sacnner读一个文件名，然后你根据这个文件名按行读文件，读出其中的一个数字存下来再写出去的就行，做之前稍微看一下bufferReder和bufferWriter的用法就行。
+
 
 
 
@@ -823,7 +895,9 @@ if __name__ == "__main__":
 www.leetcode.com - - GET /leetcode.com/problems/all 200 300
 www.google.com - - GET /google.com/search? 200 59349
 www.baidu.com - - GET /baidu.com/news 200 300
+
 我的代码：
+
 ```
 ifstream ifile(filename);
 ofstream ofile(ofilename);
@@ -847,7 +921,15 @@ return ;
 ```
 
 
+opsDev的oa，四道题，第一题很简单，第二题写regex也很简单，后面两题竟然要本地ssh，第三题写shell（算fib，不难）第四题写一个叫puppet的东西（完全懵逼），挣扎着查了一下好像是运维用的东西
 
+## Email Threads
+
+一个把Email变成Thread的题目，给一连串的Email，有收件人，发件人，内容。内容里面如果包含之前的信息的话之前的信息会有“---”的标记，然后问题是你如何把Email变成thread，你懂的，就是Gmail里面那个把来信和发信都整一起的那玩意。刚上手第一想法：根据收件人和发件人进行分类，分类分完了直接每个分类里面的内容标记一下是当前这个thread的哪道邮件。结果被test case打脸，仔细想了想发现不对，谁规定了两个人只能有一个thread了？
+没有给subject，需要根据sender和receiver来确定放哪个thread
+------结果想出的方法是先找出开头的一封邮件，再在邮件堆里搜索有木有接下来的邮件，复杂度（O(n^2)), testcase全过
+
+一个responsive的HTML Design, flexbox+mediaQuery轻松搞定。
 
 
 https://1o24bbs.com/t/topic/15217/8
@@ -859,26 +941,11 @@ https://paper.dropbox.com/doc/IBM-OA-4WtsQ9aiolsi0HXm3mECx
 https://www.1point3acres.com/bbs/collection/229895
 
 
-第二题
-purchasing supply
-这个就是啤酒空瓶换酒的模型，
-输入是 《初始资金，啤酒单价，几个瓶子能换一瓶酒》的string， 输出是直接打印，不需要return （这个比较鬼畜）
-
-第三题
-有几个小于特定值的3Sum。
-可以参考这个  Print triplets with sum less than or equal to k
-https://www.geeksforgeeks.org/pr ... than-or-equal-to-k/
+https://1o24bbs.com/t/topic/15217/7
 
 
 
-sort array in meandering order
-
-
-
-1. merge 两个sorted list。
-2. large response. 他会用Sacnner读一个文件名，然后你根据这个文件名按行读文件，读出其中的一个数字存下来再写出去的就行，做之前稍微看一下bufferReder和bufferWriter的用法就行。
-3. 里抠二吴久, 不一样的是他给的是个long，你输出也用long就行
-
-
+js的题
+https://www.1point3acres.com/bbs/thread-584292-1-1.html
 
 
