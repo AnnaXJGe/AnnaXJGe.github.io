@@ -982,3 +982,9 @@ js的题
 https://www.1point3acres.com/bbs/thread-584292-1-1.html
 
 
+# 链表
+
+
+## 206
+
+
